@@ -19,5 +19,10 @@ after_success:
   - docker build -t neeraj76/multi-worker ./worker
 
   # Login to docker CLI. Username, password are entered in Travis environment
-  
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --pasword-stdin
+
   # Push above images to dockerhub
+  - docker push neeraj76/multi-client
+  - docker push neeraj76/multi-nginx
+  - docker push neeraj76/multi-server
+  - docker push neeraj76/multi-worker
