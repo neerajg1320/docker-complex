@@ -4,12 +4,12 @@ services:
 
 # Build a test version
 before_install:
-  - docker build -t neeraj76/react-complex -f ./client/Dockerfile.dev ./client
+  - docker build -t neeraj76/react-multi -f ./client/Dockerfile.dev ./client
 
 # Primary test running section. If any script in this section exits with an error code
 # then a build failure is assumed.
 script:
-  - docker run -e CI=true neeraj76/react-complex npm test
+  - docker run -e CI=true neeraj76/react-multi npm test
 
 # If tests on test version are successful then we build a production version
 after_success:
