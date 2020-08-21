@@ -26,3 +26,16 @@ after_success:
   - docker push neeraj76/multi-nginx
   - docker push neeraj76/multi-server
   - docker push neeraj76/multi-worker
+
+deploy:
+  edge: true
+  provider: elasticbeanstalk
+  region: "us-east-2"
+  app: "multi-docker"
+  env: "MultiD  ocker-env"
+  bucket_name: "elasticbeanstalk-us-east-2-764022628003"
+  bucket_path: "docker-multi"
+  on:
+    branch: master
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key: $AWS_SECRET_KEY
